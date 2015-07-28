@@ -1,9 +1,8 @@
 #React 
 --------
 
-## Components:
-
-When using Render method, our first argument is the component we want to render, and the 2nd is the DOM node it should mount to. We can use `createClass` method to create custome component classes. It takes an object of specifications as it's argument.
+## Components
+When using Render method, the first argument is the component you would like to render, and the second is the DOM node it should mount to. You can use `createClass` method to customize component classes. It takes an object of specifications as an argument.
 
 ```js
 var MyComponent = React.createClass({
@@ -29,9 +28,7 @@ suppa Ez?
 
 
 ## Props
-
-When we use our defined components, we can add attributes called props. These attributes are available in our component  as `this.props` and can be used in our render method to render dynamic data:
-
+Once you define components as above, you can add attributes, which are called props. These attributes are available in your component as `this.props`, which can be used in your render method to render dynamic data:
 
 ```js
 var MyComponent = React.createClass({
@@ -46,8 +43,7 @@ React.render(<MyComponent name="Handsome" />, document.getElementById('myDiv'));
 ```
 
 ## Specs, Lifecycle & State
-
-The `render` method is only required spec for creating a component but, there are serveral lifecycle methods and spec we can use that are mighty helpful when you actually want your component to do anything.
+You can create a component only by `render` method. However, there are other helpful methods such as spec and lifecyle that can help you interact with the component in many possible ways.
 
 ### Lifecycle Methods
 
@@ -63,8 +59,7 @@ The `render` method is only required spec for creating a component but, there ar
 + **mixins**:  An array of objects, used to extend the current component's functionality.
     
 ### State
-
-Every component may has a `state` object and a `props` (read more about different between `props` and `state` at [here](https://github.com/uberVU/react-guide/blob/master/props-vs-state.md)). When calling `setState` triggers UI updates and is the bread and butter of React's interactivity (In my opinion this is a point of difference of React with another). If we want to set an initial state before any interaction occurs we can use the `getInitialState` method. 
+Every component may have a state object, and a props (Read more about differency between `props` and `state` [here](https://github.com/uberVU/react-guide/blob/master/props-vs-state.md)). Calling `setState` triggers UI updates, which is the bread and butter of React's interactivity. (In my opinion, this is the point that differentiates React with others). If you would like to set an initial state before any interaction occurs, use the `getInitialState` method.
 
 ```js
 var MyComponent = React.createClass({
@@ -82,8 +77,7 @@ var MyComponent = React.createClass({
 ```
 
 ##Events
-
-React also has a built in cross browser events system. The events are attached as properties of components and can trigger methods. Lets make our count increment using events
+React also has a built-in cross browser events system. The events are attached as properties of components, and can trigger methods. Let’s try increasing the count by using events with below example.
 
 ```js
 var Counter = React.createClass({
@@ -112,10 +106,9 @@ React.render(<Counter/>, document.getElementById('mount-point'));
 
 
 ## Unidirectional Data Flow
+In React, application data flows unidirectional via the `state` and `props` objects, as opposed to the two-way binding of libraries like Angular. This means that in a multi component heriachy, a common parent component should manage the `state`, and pass it down the chain via `props`.
 
-In React, application data flows unidirectional via the `state` and `props` objects, as opposed  to the two-way binding of libraries like Angular. This means that, in a multi component heriachy, a common parent component should manage the state and pass it down the chain via props.
-
-Your state should be updatead using the `setState` method to ensure that a UI refresh will occur, if necessary. The resulting values should be passed down to child components using attributes that are accessible in said children via `this.props`.
+With `setState` method, state update will lead to UI update. Keep that in mind when you use the method. The resulting values should be passed down to child components using attributes, which are accessible in said children via `this.props`.
 
 ```js
 var FilteredList = React.createClass({
